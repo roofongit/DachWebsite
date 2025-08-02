@@ -67,8 +67,9 @@ document.addEventListener('DOMContentLoaded', function () {
     function typeDescription() {
         const descriptions = [
             "Polish retard",    // CHANGE THIS: Your first description
-            "Yno Górnik",    // CHANGE THIS: Your second description
-            "Jebac Ruch"     // CHANGE THIS: Your third description (add more if needed)
+            "Torcida Ruda Śląska",    // CHANGE THIS: Your second description
+            "Jebać ruch",    // CHANGE THIS: Your third description (add more if needed)
+            "2 fig demon"
         ];
 
         let currentDescIndex = 0;
@@ -914,5 +915,6 @@ document.addEventListener('DOMContentLoaded', function () {
     }, 2000);
 
 });
+
 
 
