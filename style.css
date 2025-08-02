@@ -248,7 +248,7 @@ body {
 }
 
 .username {
-    font-size: 24px;
+    font-size: 30px;
     font-weight: 500;
     margin-bottom: 16px;
     color: rgba(255, 255, 255, 0.8);
@@ -261,7 +261,7 @@ body {
 }
 
 .description {
-    font-size: 14px;
+    font-size: 20px;
     color: rgba(255, 255, 255, 0.7);
     margin-bottom: 16px;
     min-height: 20px;
@@ -856,6 +856,7 @@ body {
     }
 
 }
+
 
 
 
