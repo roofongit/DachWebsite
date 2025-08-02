@@ -144,7 +144,7 @@ document.addEventListener('DOMContentLoaded', function () {
         cycleBackground();
 
         // Set up automatic cycling every 30 seconds
-        setInterval(cycleBackground, 30000);
+        setInterval(cycleBackground, 15000);
 
         console.log('Background auto-cycling initialized - changes every 30 seconds');
     }
@@ -914,3 +914,4 @@ document.addEventListener('DOMContentLoaded', function () {
     }, 2000);
 
 });
+
