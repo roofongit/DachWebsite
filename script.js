@@ -86,7 +86,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 charIndex++;
             }
 
-            let typeSpeed = 100;    // CHANGE THIS: Typing speed (lower = faster)
+            let typeSpeed = 120;    // CHANGE THIS: Typing speed (lower = faster)
             if (isDeleting) {
                 typeSpeed = 50;     // CHANGE THIS: Erasing speed (lower = faster)
             }
@@ -144,7 +144,7 @@ document.addEventListener('DOMContentLoaded', function () {
         cycleBackground();
 
         // Set up automatic cycling every 30 seconds
-        setInterval(cycleBackground, 15000);
+        setInterval(cycleBackground, 16000);
 
         console.log('Background auto-cycling initialized - changes every 30 seconds');
     }
@@ -914,4 +914,5 @@ document.addEventListener('DOMContentLoaded', function () {
     }, 2000);
 
 });
+
 
