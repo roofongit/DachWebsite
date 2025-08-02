@@ -66,9 +66,9 @@ document.addEventListener('DOMContentLoaded', function () {
     // - initial delay (1000): How long to wait before starting animation
     function typeDescription() {
         const descriptions = [
-            "desc 1",    // CHANGE THIS: Your first description
-            "desc 2",    // CHANGE THIS: Your second description
-            "desc 3"     // CHANGE THIS: Your third description (add more if needed)
+            "Polish retard",    // CHANGE THIS: Your first description
+            "Yno Górnik",    // CHANGE THIS: Your second description
+            "Jebac Ruch"     // CHANGE THIS: Your third description (add more if needed)
         ];
 
         let currentDescIndex = 0;
@@ -234,9 +234,8 @@ document.addEventListener('DOMContentLoaded', function () {
         // Comprehensive list of potential MP3 files to test
         const potentialFiles = [
             // Your known files
-            'Return of The Mack.mp3',
-            'This is a demo song.mp3',
-            'Ochame Kinou Fukkireta.mp3',
+            'Paktofonika - Jestem Bogiem.mp3',
+            'GrubSon - Na szczycie (official video).mp3',
             
             // Common naming patterns
             'music.mp3', 'song.mp3', 'track.mp3', 'audio.mp3', 'sound.mp3',
@@ -913,4 +912,5 @@ document.addEventListener('DOMContentLoaded', function () {
         fetchDiscordActivity();
         setInterval(fetchDiscordActivity, 30000);
     }, 2000);
+
 });
