@@ -1,3 +1,4 @@
+// hlelpe
 document.addEventListener('DOMContentLoaded', function () {
     const startScreen = document.getElementById('startScreen');
     const mainContent = document.getElementById('mainContent');
@@ -915,6 +916,7 @@ document.addEventListener('DOMContentLoaded', function () {
     }, 2000);
 
 });
+
 
 
 
