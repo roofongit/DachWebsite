@@ -24,35 +24,6 @@ document.addEventListener('DOMContentLoaded', function () {
     const notificationText = document.getElementById('notificationText');
 
     let currentBg = 'background1.png';
-    let customCursor;
-
-    // ========================================
-    // CUSTOM CURSOR SYSTEM
-    // ========================================
-    // Creates a custom cursor using Link.png image
-    // CUSTOMIZABLE OPTIONS:
-    // - Cursor positioning: Change -8 and -5 values for cursor alignment
-    // - Click scale: Change 0.9 to different value for click animation (0.8 = smaller, 1.1 = bigger)
-    // - Cursor image: Change 'Link.png' in CSS .custom-cursor background-image
-    // - Cursor size: Change width/height in CSS .custom-cursor (currently 32px x 32px)
-    function createCustomCursor() {
-        customCursor = document.createElement('div');
-        customCursor.className = 'custom-cursor';
-        document.body.appendChild(customCursor);
-
-        document.addEventListener('mousemove', (e) => {
-            customCursor.style.left = (e.clientX - 8) + 'px';  // CHANGE -8: Horizontal cursor offset
-            customCursor.style.top = (e.clientY - 5) + 'px';   // CHANGE -5: Vertical cursor offset
-        });
-
-        document.addEventListener('mousedown', () => {
-            customCursor.style.transform = 'scale(0.9)';        // CHANGE 0.9: Click scale effect
-        });
-
-        document.addEventListener('mouseup', () => {
-            customCursor.style.transform = 'scale(1)';          // Returns to normal size
-        });
-    }
 
     // ========================================
     // TYPEWRITER DESCRIPTION ANIMATION
@@ -68,8 +39,8 @@ document.addEventListener('DOMContentLoaded', function () {
     function typeDescription() {
         const descriptions = [
             "Polish retard",    // CHANGE THIS: Your first description
-            "Torcida Ruda Śląska",    // CHANGE THIS: Your second description
-            "Jebać ruch",    // CHANGE THIS: Your third description (add more if needed)
+            "Torcida Ruda ﾅ嗟ﾄska",    // CHANGE THIS: Your second description
+            "Jebaﾄruch",    // CHANGE THIS: Your third description (add more if needed)
             "2 fig demon"
         ];
 
@@ -128,7 +99,6 @@ document.addEventListener('DOMContentLoaded', function () {
                 bgImage.src = currentBg;
                 bgImage.classList.add('active');
                 bgVideo.classList.remove('active');
-                console.log(`Auto-cycled to background ${currentIndex + 1}: ${currentBg}`);
             };
 
             testImg.onerror = function () {
@@ -141,14 +111,37 @@ document.addEventListener('DOMContentLoaded', function () {
             // Move to next background for next cycle
             currentIndex = (currentIndex + 1) % backgrounds.length;
         }
+        function cycleBackgroundBack() {
+    // Move to previous background for this cycle
+            currentIndex = (currentIndex - 1 + backgrounds.length) % backgrounds.length;
+            const newBg = backgrounds[currentIndex];
+
+            // Create a temporary image to test loading
+            const testImg = new Image();
+            testImg.onload = function () {
+                // Image loaded successfully, now update the background
+                currentBg = newBg;
+                bgImage.src = currentBg;
+                bgImage.classList.add('active');
+                bgVideo.classList.remove('active');
+            };
+
+            testImg.onerror = function () {
+                console.error(`Failed to load background: ${newBg}`);
+            };
+
+            // Start loading the test image
+            testImg.src = newBg;
+        }
 
         // Start with first background immediately
         cycleBackground();
-
-        // Set up automatic cycling every 30 seconds
-        setInterval(cycleBackground, 16000);
-
-        console.log('Background auto-cycling initialized - changes every 30 seconds');
+        document.getElementById('cycleL').addEventListener('click', function () {
+            cycleBackgroundBack();
+        });
+        document.getElementById('cycleR').addEventListener('click', function () {
+            cycleBackground();
+        });
     }
 
     let isPlaying = false;
@@ -230,43 +223,15 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     async function buildPlaylist() {
-        console.log('Scanning for MP3 files...');
         const audioFiles = [];
         
         // Comprehensive list of potential MP3 files to test
         const potentialFiles = [
             // Your known files
             'Paktofonika - Jestem Bogiem.mp3',
-            'GrubSon - Na szczycie (official video).mp3',
-            
-            // Common naming patterns
-            'music.mp3', 'song.mp3', 'track.mp3', 'audio.mp3', 'sound.mp3',
-            'test.mp3', 'demo.mp3', 'sample.mp3', 'new.mp3', 'latest.mp3',
-            'untitled.mp3', 'recording.mp3', 'output.mp3', 'final.mp3',
-            
-            // Numbered patterns
-            ...Array.from({ length: 50 }, (_, i) => `${i + 1}.mp3`),
-            ...Array.from({ length: 20 }, (_, i) => `song${i + 1}.mp3`),
-            ...Array.from({ length: 20 }, (_, i) => `track${i + 1}.mp3`),
-            ...Array.from({ length: 10 }, (_, i) => `music${i + 1}.mp3`),
-            ...Array.from({ length: 10 }, (_, i) => `audio${i + 1}.mp3`),
-            
-            // Single letter files
-            ...Array.from({ length: 26 }, (_, i) => `${String.fromCharCode(97 + i)}.mp3`),
-            
-            // Common download patterns
-            'downloaded.mp3', 'new_song.mp3', 'latest_track.mp3',
-            'converted.mp3', 'export.mp3', 'mixdown.mp3', 'master.mp3',
-            
-            // Artist - Title patterns
-            'artist - song.mp3', 'unknown - track.mp3',
-            
-            // Date patterns
-            ...Array.from({ length: 12 }, (_, i) => `2024-${(i + 1).toString().padStart(2, '0')}.mp3`),
-            ...Array.from({ length: 31 }, (_, i) => `${(i + 1).toString().padStart(2, '0')}.mp3`)
+            'GrubSon - Na szczycie (official video).mp3'
         ];
 
-        console.log(`Testing ${potentialFiles.length} potential MP3 files...`);
 
         // Test files in smaller batches to avoid overwhelming the browser
         const batchSize = 10;
@@ -290,7 +255,6 @@ document.addEventListener('DOMContentLoaded', function () {
             // Add found files to the list
             results.forEach(filename => {
                 if (filename) {
-                    console.log(`✓ Found MP3: ${filename}`);
                     audioFiles.push(filename);
                     foundCount++;
                 }
@@ -298,7 +262,6 @@ document.addEventListener('DOMContentLoaded', function () {
             
             // Show progress
             if (i % 50 === 0) {
-                console.log(`Scanned ${i + batchSize}/${potentialFiles.length} files, found ${foundCount} MP3s so far...`);
             }
         }
 
@@ -314,7 +277,6 @@ document.addEventListener('DOMContentLoaded', function () {
             });
         }
 
-        console.log(`🎵 Scan complete! Found ${audioFiles.length} MP3 files:`);
         audioFiles.forEach(file => console.log(`  - ${file}`));
         console.log('Built playlist:', playlist);
         
@@ -342,31 +304,12 @@ document.addEventListener('DOMContentLoaded', function () {
         tempAudio.src = audioElement.src;
     }
 
-    function preloadBackground() {
-        const pngImg = new Image();
-        pngImg.onload = function () {
-            startScreen.classList.add('bg-loaded');
-            backgroundLoaded = true;
-        };
-        pngImg.src = 'background.png';
-
-        const gifImg = new Image();
-        gifImg.src = 'background.gif';
-
-        const videoPreload = document.createElement('video');
-        videoPreload.preload = 'metadata';
-        videoPreload.src = 'background.mp4';
-        videoPreload.classList.add('preload');
-        document.body.appendChild(videoPreload);
-    }
-
     function setupBackground() {
         // Initialize with background1.png and ensure proper state
         currentBg = 'background1.png';
 
         // Force load the background image
         bgImage.onload = function () {
-            console.log('Background image loaded successfully:', currentBg);
             bgImage.classList.add('active');
         };
 
@@ -384,20 +327,6 @@ document.addEventListener('DOMContentLoaded', function () {
             bgOptions[0].classList.add('active');
         }
 
-        console.log('Background setup initiated with:', currentBg);
-    }
-
-    function loadGifBackground() {
-        const gifImg = new Image();
-        gifImg.onload = function () {
-            bgImage.src = 'background.gif';
-            bgImage.classList.add('active');
-        };
-        gifImg.onerror = function () {
-            bgImage.src = 'background.png';
-            bgImage.classList.add('active');
-        };
-        gifImg.src = 'background.gif';
     }
 
     function loadSong(index) {
@@ -410,7 +339,6 @@ document.addEventListener('DOMContentLoaded', function () {
             // Make sure songTitle element exists before setting text
             if (songTitle) {
                 songTitle.textContent = song.title;
-                console.log('Song title updated to:', song.title);
             } else {
                 console.error('songTitle element not found!');
             }
@@ -453,7 +381,6 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     async function initializePlayer() {
-        console.log('Initializing music player...');
         
         // Check if songTitle element exists
         if (!songTitle) {
@@ -466,23 +393,18 @@ document.addEventListener('DOMContentLoaded', function () {
         
         await buildPlaylist();
         if (playlist.length > 0) {
-            console.log('Loading first song...');
             
             // Update title immediately with first song - force it multiple times to ensure it sticks
             songTitle.textContent = playlist[0].title;
-            console.log('Song title set to:', playlist[0].title);
             
             // Force update again after a short delay
             setTimeout(() => {
                 songTitle.textContent = playlist[0].title;
-                console.log('Song title force-updated to:', playlist[0].title);
             }, 100);
             
             // Then load the song
             loadSong(0);
-            console.log('First song loaded:', playlist[0].title);
         } else {
-            console.log('No songs found in playlist');
             songTitle.textContent = 'No songs found - Add audio files to your directory';
         }
     }
@@ -525,17 +447,35 @@ document.addEventListener('DOMContentLoaded', function () {
 
         setTimeout(typeChar, 500);
     }
+    
+    // ========================================
+    // GMT TIME FUNCTION
+    // ========================================
+    function updateGmtTime() {
+        const gmtTimeElement = document.getElementById('gmtTime');
+        if (gmtTimeElement) {
+            const now = new Date();
+            const timeString = now.toLocaleTimeString('en-US', {
+                timeZone: 'GMT',
+                hour12: false,
+                hour: '2-digit',
+                minute: '2-digit',
+                second: '2-digit'
+            });
+            gmtTimeElement.textContent = `${timeString} GMT`;
+        }
+    }
 
     initializePlayer();
-    preloadBackground();
-    createCustomCursor();
     typeDescription();
     initBackgroundCycling();
     scrollTitle();
     typeStartText();
+    updateGmtTime(); // Initial call to show time immediately
+    setInterval(updateGmtTime, 1000); // Update time every second
+
 
     startScreen.addEventListener('click', function () {
-        console.log('Start screen clicked, attempting to play music...');
 
         startScreen.style.opacity = '0';
         setTimeout(() => {
@@ -547,7 +487,6 @@ document.addEventListener('DOMContentLoaded', function () {
         function playMusic() {
             if (playlist.length > 0) {
                 musicPlayer.play().then(() => {
-                    console.log('Music started successfully');
                     isPlaying = true;
                     updatePlayPauseButton();
                 }).catch(err => {
@@ -689,7 +628,6 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     musicPlayer.addEventListener('loadedmetadata', function () {
-        console.log('Music metadata loaded, duration:', musicPlayer.duration);
         if (musicPlayer.duration && !isNaN(musicPlayer.duration)) {
             totalTimeDisplay.textContent = formatTime(musicPlayer.duration);
         }
@@ -720,7 +658,6 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 
     musicPlayer.addEventListener('canplay', function () {
-        console.log('Music can play, duration:', musicPlayer.duration);
         if (musicPlayer.duration && !isNaN(musicPlayer.duration)) {
             totalTimeDisplay.textContent = formatTime(musicPlayer.duration);
         }
@@ -731,13 +668,11 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 
     musicPlayer.addEventListener('play', function () {
-        console.log('Music play event fired');
         isPlaying = true;
         updatePlayPauseButton();
     });
 
     musicPlayer.addEventListener('pause', function () {
-        console.log('Music pause event fired');
         isPlaying = false;
         updatePlayPauseButton();
     });
@@ -794,20 +729,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     if (discordBtn) {
         discordBtn.addEventListener('click', function (e) {
-            e.preventDefault();
-            const username = this.getAttribute('data-username');
-
-            if (username && username !== 'YOUR_DISCORD_USERNAME_HERE') {
-                copyToClipboard(username).then(() => {
-                    console.log('Discord username copied to clipboard');
-                    showNotification('Discord username copied!');
-                }).catch(err => {
-                    console.error('Failed to copy username:', err);
-                    alert('Failed to copy username. Please copy manually: ' + username);
-                });
-            } else {
-                alert('Please set your Discord username in the HTML file');
-            }
+            window.open(`https://discord.com/users/${DISCORD_USER_ID}`, `_blank`);
         });
     }
 
@@ -863,11 +785,11 @@ document.addEventListener('DOMContentLoaded', function () {
                 } else if (activity.type === 2) {
                     const artist = activity.state || 'Unknown Artist';
                     const song = activity.details || 'Unknown Song';
-                    activityHTML += createActivityItem('🎵', 'Spotify', `${song} by ${artist}`);
+                    activityHTML += createActivityItem('七', 'Spotify', `${song} by ${artist}`);
                 } else if (activity.type === 3) {
-                    activityHTML += createActivityItem('📺', activity.name, `Watching ${activity.details || activity.name}`);
+                    activityHTML += createActivityItem('銅', activity.name, `Watching ${activity.details || activity.name}`);
                 } else if (activity.type === 4) {
-                    activityHTML += createActivityItem('💭', 'Custom Status', activity.state || 'Custom status');
+                    activityHTML += createActivityItem('眺', 'Custom Status', activity.state || 'Custom status');
                 }
             });
 
@@ -916,7 +838,3 @@ document.addEventListener('DOMContentLoaded', function () {
     }, 2000);
 
 });
-
-
-
-
