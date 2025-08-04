@@ -437,13 +437,12 @@ document.addEventListener('DOMContentLoaded', function () {
         const gmtTimeElement = document.getElementById('gmtTime');
         if (gmtTimeElement) {
             const now = new Date();
-            const timeString = now.toLocaleTimeString('en-US', {
-                timeZone: 'GMT',
+            const timeString = now.toLocaleTimeString('en-US',{
                 hour12: false,
                 hour: '2-digit',
                 minute: '2-digit',
-                second: '2-digit'
-            });
+                second: '2-digit',
+                timeZone:'WET'})
             gmtTimeElement.textContent = `${timeString} GMT`;
         }
     }
