@@ -112,36 +112,18 @@ document.addEventListener('DOMContentLoaded', function () {
             // Move to next background for next cycle
             currentIndex = (currentIndex + 1) % backgrounds.length;
         }
-        function cycleBackgroundBack() {
-    // Move to previous background for this cycle
-            currentIndex = (currentIndex - 1 + backgrounds.length) % backgrounds.length;
-            const newBg = backgrounds[currentIndex];
-
-            // Create a temporary image to test loading
-            const testImg = new Image();
-            testImg.onload = function () {
-                // Image loaded successfully, now update the background
-                currentBg = newBg;
-                bgImage.src = currentBg;
-                bgImage.classList.add('active');
-                bgVideo.classList.remove('active');
-            };
-
-            testImg.onerror = function () {
-                console.error(`Failed to load background: ${newBg}`);
-            };
-
-            // Start loading the test image
-            testImg.src = newBg;
-        }
+        
 
         // Start with first background immediately
         cycleBackground();
-        document.getElementById('cycleL').addEventListener('click', function () {
-            cycleBackgroundBack();
+        document.getElementById('cycle1').addEventListener('click', function () {
+            bgImage.src = 'background1.png';
         });
-        document.getElementById('cycleR').addEventListener('click', function () {
-            cycleBackground();
+        document.getElementById('cycle2').addEventListener('click', function () {
+            bgImage.src = 'background2.png';
+        });
+        document.getElementById('cycle3').addEventListener('click', function () {
+            bgImage.src = 'background3.png';
         });
     }
 
