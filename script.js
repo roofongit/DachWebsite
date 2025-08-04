@@ -462,7 +462,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 minute: '2-digit',
                 second: '2-digit'
             });
-            gmtTimeElement.textContent = `${timeString} GMT + 1`;
+            gmtTimeElement.textContent = `${timeString} GMT`;
         }
     }
 
@@ -839,4 +839,5 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
 });
+
 
