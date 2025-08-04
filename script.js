@@ -40,8 +40,8 @@ document.addEventListener('DOMContentLoaded', function () {
     function typeDescription() {
         const descriptions = [
             "Polish retard",
-            "Torcida Ruda ﾅ嗟ﾄska",    // CHANGE THIS: Your second description
-            "Jebaﾄruch",
+            "Torcida Ruda Śląska",    // CHANGE THIS: Your second description
+            "Jebać ruch",
             "2 fig demon"
         ];
 
@@ -822,6 +822,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
 });
+
 
 
 
