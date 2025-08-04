@@ -74,10 +74,10 @@ document.addEventListener('DOMContentLoaded', function () {
                 typeSpeed = 500;    // CHANGE THIS: Pause before typing next description
             }
 
-            setout(typeEffect, typeSpeed);
+            setTimeout(typeEffect, typeSpeed);
         }
 
-        setout(typeEffect, 1000); // CHANGE THIS: Initial delay before animation starts
+        setTimeout(typeEffect, 1000); // CHANGE THIS: Initial delay before animation starts
     }
 
     function initBackgroundCycling() {
@@ -195,7 +195,7 @@ document.addEventListener('DOMContentLoaded', function () {
             audio.addEventListener('loadedmetadata', onSuccess, { once: true });
             audio.addEventListener('error', onError, { once: true });
 
-            setout(() => {
+            setTimeout(() => {
                 cleanup();
                 resolve(false);
             }, 3000);
@@ -381,7 +381,7 @@ document.addEventListener('DOMContentLoaded', function () {
             songTitle.textContent = playlist[0].title;
             
             // Force update again after a short delay
-            setout(() => {
+            setTimeout(() => {
                 songTitle.textContent = playlist[0].title;
             }, 100);
             
@@ -424,11 +424,11 @@ document.addEventListener('DOMContentLoaded', function () {
             if (i < text.length) {
                 startText.textContent += text.charAt(i);
                 i++;
-                setout(typeChar, 100);
+                setTimeout(typeChar, 100);
             }
         }
 
-        setout(typeChar, 500);
+        setTimeout(typeChar, 500);
     }
     
     // ========================================
@@ -822,6 +822,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
 });
+
 
 
 
