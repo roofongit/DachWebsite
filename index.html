@@ -1,37 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <!--
-    ========================================
-    PERSONAL PROFILE PAGE WITH MUSIC PLAYER
-    ========================================
-    
-    FEATURES INCLUDED:
-    - Animated scrolling page title
-    - Custom cursor using Link.png
-    - Typewriter description animation (loops through 3 descriptions)
-    - Music player with playlist support and auto-detection
-    - Background selector (3 PNG backgrounds)
-    - Visit counter with eye icon
-    - Discord activity integration
-    - Social media copy buttons (Litecoin, YouTube, Discord)
-    - "Made with ❤️ by Fullhook" credit with pumping heart
-    - Responsive design with dark theme
-    
-    FILES REQUIRED:
-    - style.css (styling)
-    - script.js (functionality)
-    - Link.png (custom cursor)
-    - favicon.png (browser icon)
-    - pfp.png (profile picture)
-    - background1.png, background2.png, background3.png (backgrounds)
-    - Audio files: "Return of The Mack.mp3", "This is a demo song.mp3" (or any MP3 files)
-    
-    CUSTOMIZATION:
-    - Edit descriptions in script.js typeDescription() function
-    - Change social links and usernames in the HTML
-    - Replace images with your own files
-    - Modify Discord User ID in script.js for activity integration
+
+    -------------------
+    Dach Website
+    -------------------
+    1. to add backgrounds, go to 'script.js' and add your file name to line 86.
+    2. to add music, go to 'script.js' and add your file name to line 232.
+    3. to change the time info, go to 'script.js', and go to line 459.
+    4. to change the discord embed, go to line 25 in 'index.html'.
+    5. to add more description lines, go to 'script.js' and add your lines to line 44.
+
 -->
 
 <head>
@@ -43,6 +22,9 @@
     <link rel="icon" href="favicon.png" type="image/png">
     <!-- Main stylesheet -->
     <link rel="stylesheet" href="style.css">
+    <meta property="og:title" content="cheatin.fun" />
+    <meta property="og:url" content="https://cheatin.fun/" />
+    <meta property="og:image" content="https://cheatin.fun/favicon.png" />
 </head>
 
 <body>
@@ -60,10 +42,10 @@
         <!-- Handles video/image backgrounds -->
         <div class="background-container">
             <video id="bgVideo" class="background-media" muted loop>
-                <source src="background.png" type="video/mp4">
+                <source src="" type="video/mp4">
             </video>
             <!-- Background image - controlled by theme selector -->
-            <img id="bgImage" class="background-media" src="background.png" alt="">
+            <img id="bgImage" class="background-media" src="" alt="">
         </div>
 
         <!-- ========== BIO CARD ========== -->
@@ -71,6 +53,7 @@
         <div class="bio-card">
             <!-- ========== VISIT COUNTER ========== -->
             <!-- Top-right corner visit counter with eye icon -->
+             
             <div class="visit-counter">
                 <!-- Eye icon SVG -->
                 <svg class="eye-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -80,8 +63,8 @@
                 </svg>
                 <!-- Visit counter image from external service -->
                 <!-- CUSTOMIZE: Change the 'page' parameter to your domain -->
-                <img src="https://visit-counter.vercel.app/counter.png?page=https%3A%2F%2Fcheatin.xyz&s=14&c=ffffff&bg=00000000&no=2&ff=electrolize&tb=&ta="
-                    alt="visits" class="counter-img">
+                <!-- <img src="https://visit-counter.vercel.app/counter.png?page=https%3A%2F%2Fcheatin.xyz&s=14&c=ffffff&bg=00000000&no=2&ff=electrolize&tb=&ta=" -->
+                    <!-- alt="visits" class="counter-img"> -->
             </div>
 
             <!-- ========== PROFILE SECTION ========== -->
@@ -133,33 +116,31 @@
                     </svg>
                 </button>
             </div>
+            <div class="user-card">
+                <div id="timeContent" title="My current time">
+                    </div>
+                <div id="gmtTime" class="time-text"></div>
+            </div>
         </div>
 
         <!-- ========== MUSIC PLAYER ========== -->
-        <!-- Full-featured music player with playlist support -->
         <div class="music-player">
-            <!-- Song information display -->
             <div class="song-info">
                 <div class="song-title" id="songTitle">Loading...</div>
             </div>
 
-            <!-- Player controls and timeline -->
             <div class="player-controls">
-                <!-- Current time display -->
                 <div class="time-display">
                     <span id="currentTime">00:00</span>
                 </div>
 
-                <!-- Control buttons -->
                 <div class="control-buttons">
-                    <!-- Previous song button -->
                     <button class="control-btn" id="prevBtn" title="Previous Song">
                         <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M6 6h2v12H6V6zm3.5 6l8.5 6V6l-8.5 6z" fill="currentColor" />
                         </svg>
                     </button>
 
-                    <!-- Rewind 10 seconds button -->
                     <button class="control-btn" id="rewindBtn" title="Rewind 10s">
                         <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path
@@ -169,7 +150,6 @@
                         </svg>
                     </button>
 
-                    <!-- Play/Pause button -->
                     <button class="play-pause-btn" id="playPauseBtn">
                         <div class="pause-icon">
                             <div class="pause-bar"></div>
@@ -177,7 +157,6 @@
                         </div>
                     </button>
 
-                    <!-- Forward 10 seconds button -->
                     <button class="control-btn" id="forwardBtn" title="Forward 10s">
                         <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path
@@ -187,7 +166,6 @@
                         </svg>
                     </button>
 
-                    <!-- Next song button -->
                     <button class="control-btn" id="nextBtn" title="Next Song">
                         <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M6 18l8.5-6L6 6v12zM16 6v12h2V6h-2z" fill="currentColor" />
@@ -195,7 +173,6 @@
                     </button>
                 </div>
 
-                <!-- Total time display -->
                 <div class="time-display">
                     <span id="totalTime">--:--</span>
                 </div>
@@ -211,9 +188,8 @@
         </div>
 
         <!-- ========== AUDIO ELEMENT ========== -->
-        <!-- Hidden audio element for music playback -->
         <audio id="musicPlayer" preload="metadata">
-            <source src="music.mp3" type="audio/mpeg">
+            <source src="" type="audio/mpeg">
         </audio>
 
         <!-- ========== DISCORD ACTIVITY ========== -->
@@ -239,7 +215,8 @@
         <!-- ========== BOTTOM UI ELEMENTS ========== -->
         <!-- "Made with ❤️ by Fullhook" credit - Bottom left -->
         <div class="made-by">
-            Made with <span class="heart">❤️</span> by Fullhook
+            Made with <span class="heart">❤️</span> by Fullhook<br>
+            Revised with <span class="heart">❤️</span> by <a href="https://squair.xyz" target="_blank">Squair</a>
         </div>
 
 
@@ -249,8 +226,20 @@
         <div id="copyNotification" class="copy-notification">
             <span id="notificationText">Copied!</span>
         </div>
+        <div id="background-selector" class="discord-activity">
+            <h3 class="activity-title" style="text-align: center;">Background selector</h3>
+            <div class="control-buttons" style="justify-content: center;">
+                <button class="control-btn" id="cycleL" title="Previous Background">
+                    <img src="https://squair.xyz/gifs/arrowL.png" alt="Previous Background">
+                </button>
+                <button class="control-btn" id="cycleR" title="Next Background">
+                    <img src="https://squair.xyz/gifs/arrowR.png" alt="Next Background">
+                </button>
+            </div>
+        </div>
     </div>
 
+    
     <!-- ========== JAVASCRIPT ========== -->
     <!-- Main functionality script -->
     <script src="script.js"></script>
