@@ -73,10 +73,10 @@ document.addEventListener('DOMContentLoaded', function () {
                 typeSpeed = 500;    // CHANGE THIS: Pause before typing next description
             }
 
-            setTimeout(typeEffect, typeSpeed);
+            setout(typeEffect, typeSpeed);
         }
 
-        setTimeout(typeEffect, 1000); // CHANGE THIS: Initial delay before animation starts
+        setout(typeEffect, 1000); // CHANGE THIS: Initial delay before animation starts
     }
 
     function initBackgroundCycling() {
@@ -212,7 +212,7 @@ document.addEventListener('DOMContentLoaded', function () {
             audio.addEventListener('loadedmetadata', onSuccess, { once: true });
             audio.addEventListener('error', onError, { once: true });
 
-            setTimeout(() => {
+            setout(() => {
                 cleanup();
                 resolve(false);
             }, 3000);
@@ -343,10 +343,10 @@ document.addEventListener('DOMContentLoaded', function () {
                 console.error('songTitle element not found!');
             }
 
-            timelineProgress.style.width = '0%';
-            timelineHandle.style.left = '0%';
-            currentTimeDisplay.textContent = '00:00';
-            totalTimeDisplay.textContent = '--:--';
+            lineProgress.style.width = '0%';
+            lineHandle.style.left = '0%';
+            currentDisplay.textContent = '00:00';
+            totalDisplay.textContent = '--:--';
 
             musicPlayer.load();
         }
@@ -370,13 +370,13 @@ document.addEventListener('DOMContentLoaded', function () {
 
     function rewind() {
         if (musicPlayer.duration && !isNaN(musicPlayer.duration)) {
-            musicPlayer.currentTime = Math.max(0, musicPlayer.currentTime - 10);
+            musicPlayer.current = Math.max(0, musicPlayer.current - 10);
         }
     }
 
     function forward() {
         if (musicPlayer.duration && !isNaN(musicPlayer.duration)) {
-            musicPlayer.currentTime = Math.min(musicPlayer.duration, musicPlayer.currentTime + 10);
+            musicPlayer.current = Math.min(musicPlayer.duration, musicPlayer.current + 10);
         }
     }
 
@@ -394,11 +394,11 @@ document.addEventListener('DOMContentLoaded', function () {
         await buildPlaylist();
         if (playlist.length > 0) {
             
-            // Update title immediately with first song - force it multiple times to ensure it sticks
+            // Update title immediately with first song - force it multiple s to ensure it sticks
             songTitle.textContent = playlist[0].title;
             
             // Force update again after a short delay
-            setTimeout(() => {
+            setout(() => {
                 songTitle.textContent = playlist[0].title;
             }, 100);
             
@@ -441,28 +441,28 @@ document.addEventListener('DOMContentLoaded', function () {
             if (i < text.length) {
                 startText.textContent += text.charAt(i);
                 i++;
-                setTimeout(typeChar, 100);
+                setout(typeChar, 100);
             }
         }
 
-        setTimeout(typeChar, 500);
+        setout(typeChar, 500);
     }
     
     // ========================================
-    // GMT TIME FUNCTION
+    // GMT  FUNCTION
     // ========================================
     function updateGmtTime() {
         const gmtTimeElement = document.getElementById('gmtTime');
         if (gmtTimeElement) {
             const now = new Date();
             const timeString = now.toLocaleTimeString('en-US', {
-                timeZone: 'GMT',
+                timeZone: 'GMT + 1',
                 hour12: false,
                 hour: '2-digit',
                 minute: '2-digit',
                 second: '2-digit'
             });
-            gmtTimeElement.textContent = `${timeString} GMT`;
+            gmtTimeElement.textContent = `${timeString} GMT + 1`;
         }
     }
 
@@ -839,3 +839,4 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
 });
+
