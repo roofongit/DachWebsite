@@ -40,7 +40,7 @@ document.addEventListener('DOMContentLoaded', function () {
         const descriptions = [
             "Polish retard",    // CHANGE THIS: Your first description
             "Torcida Ruda ﾅ嗟ﾄska",    // CHANGE THIS: Your second description
-            "Jebaﾄruch",    // CHANGE THIS: Your third description (add more if needed)
+            "Jebaﾄruch",    // CHANGE THIS: Your third description (add more if needed) 
             "2 fig demon"
         ];
 
