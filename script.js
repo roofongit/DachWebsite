@@ -39,9 +39,9 @@ document.addEventListener('DOMContentLoaded', function () {
     // - initial delay (1000): How long to wait before starting animation
     function typeDescription() {
         const descriptions = [
-            "Polish retard",    // CHANGE THIS: Your first description
-            "Torcida Ruda Śląska",    // CHANGE THIS: Your second description
-            "Jebać ruch",    // CHANGE THIS: Your third description (add more if needed)
+            "Polish retard",
+            "Torcida Ruda ﾅ嗟ﾄska",    // CHANGE THIS: Your second description
+            "Jebaﾄruch",
             "2 fig demon"
         ];
 
@@ -443,8 +443,8 @@ document.addEventListener('DOMContentLoaded', function () {
                 hour12: false,
                 hour: '2-digit',
                 minute: '2-digit',
-                second: '2-digit'
-            });
+                second: '2-digit',
+                timeZone:'WET'})
             gmtTimeElement.textContent = `${timeString} GMT`;
         }
     }
