@@ -1,4 +1,5 @@
-// hlelpe
+// hlelp
+
 document.addEventListener('DOMContentLoaded', function () {
     const startScreen = document.getElementById('startScreen');
     const mainContent = document.getElementById('mainContent');
@@ -38,9 +39,9 @@ document.addEventListener('DOMContentLoaded', function () {
     // - initial delay (1000): How long to wait before starting animation
     function typeDescription() {
         const descriptions = [
-            "Polish retard",    // CHANGE THIS: Your first description
+            "Polish retard",
             "Torcida Ruda ﾅ嗟ﾄska",    // CHANGE THIS: Your second description
-            "Jebaﾄruch",    // CHANGE THIS: Your third description (add more if needed) 
+            "Jebaﾄruch",
             "2 fig demon"
         ];
 
@@ -325,10 +326,10 @@ document.addEventListener('DOMContentLoaded', function () {
                 console.error('songTitle element not found!');
             }
 
-            timelineProgress.style.width = '0%';
-            timelineHandle.style.left = '0%';
-            currentTimeDisplay.textContent = '00:00';
-            totalTimeDisplay.textContent = '--:--';
+            lineProgress.style.width = '0%';
+            lineHandle.style.left = '0%';
+            currentDisplay.textContent = '00:00';
+            totalDisplay.textContent = '--:--';
 
             musicPlayer.load();
         }
@@ -352,13 +353,13 @@ document.addEventListener('DOMContentLoaded', function () {
 
     function rewind() {
         if (musicPlayer.duration && !isNaN(musicPlayer.duration)) {
-            musicPlayer.currentTime = Math.max(0, musicPlayer.currentTime - 10);
+            musicPlayer.current = Math.max(0, musicPlayer.current - 10);
         }
     }
 
     function forward() {
         if (musicPlayer.duration && !isNaN(musicPlayer.duration)) {
-            musicPlayer.currentTime = Math.min(musicPlayer.duration, musicPlayer.currentTime + 10);
+            musicPlayer.current = Math.min(musicPlayer.duration, musicPlayer.current + 10);
         }
     }
 
@@ -376,7 +377,7 @@ document.addEventListener('DOMContentLoaded', function () {
         await buildPlaylist();
         if (playlist.length > 0) {
             
-            // Update title immediately with first song - force it multiple times to ensure it sticks
+            // Update title immediately with first song - force it multiple s to ensure it sticks
             songTitle.textContent = playlist[0].title;
             
             // Force update again after a short delay
@@ -431,13 +432,14 @@ document.addEventListener('DOMContentLoaded', function () {
     }
     
     // ========================================
-    // GMT TIME FUNCTION
+    // GMT  FUNCTION
     // ========================================
     function updateGmtTime() {
         const gmtTimeElement = document.getElementById('gmtTime');
         if (gmtTimeElement) {
             const now = new Date();
-            const timeString = now.toLocaleTimeString('en-US',{
+            const timeString = now.toLocaleTimeString('en-US', {
+                timeZone: 'GMT + 1',
                 hour12: false,
                 hour: '2-digit',
                 minute: '2-digit',
@@ -818,4 +820,9 @@ document.addEventListener('DOMContentLoaded', function () {
         setInterval(fetchDiscordActivity, 30000);
     }, 2000);
 
+
 });
+
+
+
+
