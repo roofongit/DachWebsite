@@ -39,8 +39,8 @@ document.addEventListener('DOMContentLoaded', function () {
     function typeDescription() {
         const descriptions = [
             "Polish retard",    // CHANGE THIS: Your first description
-            "Torcida Ruda ﾅ嗟ﾄska",    // CHANGE THIS: Your second description
-            "Jebaﾄruch",    // CHANGE THIS: Your third description (add more if needed)
+            "Torcida Ruda Śląska",    // CHANGE THIS: Your second description
+            "Jebać ruch",    // CHANGE THIS: Your third description (add more if needed)
             "2 fig demon"
         ];
 
@@ -836,5 +836,6 @@ document.addEventListener('DOMContentLoaded', function () {
         fetchDiscordActivity();
         setInterval(fetchDiscordActivity, 30000);
     }, 2000);
+
 
 });
