@@ -832,10 +832,12 @@ html {
 
 }
 .background-option {
-    width: 50px;
+    display: flex;
+    width: 100px;
     height: 50px;
     border-radius: 8px;
     margin: 10px;
+    left: 100px;
     cursor: pointer;
     background-size: cover;
     background-position: center;
@@ -844,7 +846,6 @@ html {
 
 .background-option:hover {
     transform: scale(1.05);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
 }
 #right{
     display: block;

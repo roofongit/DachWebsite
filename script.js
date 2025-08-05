@@ -720,7 +720,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     musicPlayer.load();
 
-    const DISCORD_USER_ID = '1362708729593729177';
+    const DISCORD_USER_ID = '504805980631072778';
     const statusIndicator = document.getElementById('statusIndicator');
     const activityContent = document.getElementById('activityContent');
 
@@ -822,7 +822,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
 });
-
 
 
 
